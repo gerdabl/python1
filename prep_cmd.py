@@ -1,4 +1,5 @@
 # #01S1#01S2#02SrS4S5 oder #01S6
+import numpy as np
 maxid = 10
 cmd_list = ["" for x in range(maxid+1)]
 id = 1
@@ -17,7 +18,7 @@ def prep_cmd(id, tx_que, cmd_list):
 
     a = ""
     b = ""
-    c = ""
+
 
     for i in cmd_id_list:
         if i != "":
@@ -25,9 +26,9 @@ def prep_cmd(id, tx_que, cmd_list):
             if len(a) < maxlength:
              b = a
             else:
-                c = c + i
-    cmd_list[id] = c
-
+                b = b + i
+    cmd_list[id] = b
+    
     return(b)
 
 
@@ -36,3 +37,27 @@ a = prep_cmd(id, tx_que, cmd_list)
 
 print(a)
 print(cmd_list)
+
+#  1   2    3    4      5      6       7
+# R,S  T,U  Edg  quick  qick2  quick3  long
+
+dig_arr = np.zeros((64,100) ,dtype=np.int8)
+
+dig_arr[0,0] = 1
+print(dig_arr)
+
+print(dig_arr.__sizeof__())
+
+import configparser
+config = configparser.ConfigParser()
+config.sections()
+config.read('file.ini')
+print(config.sections())
+for k in config['LOGIC_MODULE_CALC']:
+    #print(k)
+    print(k,"=",config['LOGIC_MODULE_CALC'][k])
+
+
+
+
+
